@@ -1,0 +1,159 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03a9f4;color: white;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="javascript:void(0)"> <code> OTA Stock Management</code> </a>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+            [routerLink]="['/network_setting']">Network Setting</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+            [routerLink]="['/stock_management']">Stock Managment</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row my-5 px-3">
+    <div class="col-sm-2">
+      <select class="form-control" [(ngModel)]="siteConfig.site">
+        <option [value]="null">Select Website</option>
+        <option [value]="site.name" *ngFor="let site of siteList">{{site.name}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="siteConfig.username">
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group mb-3">
+        <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="siteConfig.password">
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter API Secret Key" [(ngModel)]="siteConfig.api_key">
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Enter Hotel ID" [(ngModel)]="siteConfig.hotel_id">
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="input-group mb-3 ">
+        <button class="btn btn-warning" (click)="insertNewSite()">Insert</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-striped">
+        <thead class="bg-light">
+          <tr class="text-center">
+            <th>Website Name</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>API Secret Key</th>
+            <th>Access Type Hotel ID</th>
+            <th>Status</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngIf="newSiteList.length == 0">
+            <td colspan="7" class="text-center">No Data</td>
+          </tr>
+          <tr *ngFor="let item of newSiteList;let idx=index;" (mouseover)="showActionDropDown[idx]=true"
+            (mouseleave)="showActionDropDown[idx]=false;">
+            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.site"></td>
+            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.username"></td>
+            <td><input type="password" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.password">
+            </td>
+            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.api_key"></td>
+            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.hotel_id"></td>
+            <td>
+              <div class="toggler" [ngClass]="{'disabled':!item.isEditable}">
+                <input id="toggler-{{idx}}" name="toggler-1" type="checkbox" [checked]="item.status" value="1">
+                <label for="toggler-{{idx}}">
+                  <svg class="toggler-on" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <polyline class="path check" points="100.2,40.2 51.5,88.8 29.8,67.5"></polyline>
+                  </svg>
+                  <svg class="toggler-off" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                    <line class="path line" x1="34.4" y1="34.4" x2="95.8" y2="95.8"></line>
+                    <line class="path line" x1="95.8" y1="34.4" x2="34.4" y2="95.8"></line>
+                  </svg>
+                </label>
+              </div>
+            </td>
+            <td class="action-btn">
+              <div class="d-flex" *ngIf="showActionDropDown[idx]">
+                <button type="button" class="btn btn-sm btn-light " [title]="item.isEditable ? 'Save' : 'Edit'" (click)="item.isEditable=!item.isEditable">
+                  <ng-container *ngIf="!item.isEditable">
+                    <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor"
+                      class="bi bi-pencil-square" viewBox="0 0 16 16">
+                      <path
+                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z">
+                      </path>
+                      <path fill-rule="evenodd"
+                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z">
+                      </path>
+                    </svg>
+                  </ng-container>
+                  <ng-container *ngIf="item.isEditable">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-floppy-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M0 1.5A1.5 1.5 0 0 1 1.5 0H3v5.5A1.5 1.5 0 0 0 4.5 7h7A1.5 1.5 0 0 0 13 5.5V0h.086a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5H14v-5.5A1.5 1.5 0 0 0 12.5 9h-9A1.5 1.5 0 0 0 2 10.5V16h-.5A1.5 1.5 0 0 1 0 14.5z" />
+                      <path
+                        d="M3 16h10v-5.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5zm9-16H4v5.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5zM9 1h2v4H9z" />
+                    </svg>
+                  </ng-container>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-danger mx-2" (click)="toggleDeleteModal(idx)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                    <path
+                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5">
+                    </path>
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-primary" title="Sync Data" >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                  </svg>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="modal" *ngIf="deleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Site ?</h5>
+        <button type="button" class=" btn btn-sm btn-secondary btn-close" (click)="closeModal()">X</button>
+      </div>
+      <div class="modal-body">
+        <p>This process can't be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-danger" (click)="deleteSite()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

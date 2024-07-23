@@ -22,9 +22,6 @@
         <div class="table-title">
             <div class="row justify-content-between">
                 <div class="col-sm-3 d-flex ">
-                    <!-- <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search by product" [(ngModel)]="searchText" (input)="filterList()">
-                    </div> -->
                     <div>
                         <input type="text" placeholder="Search SKU" class="form-control" (input)="onSearch($event)" [value]="searchQuery"/>
                         <div *ngIf="filteredSuggestions.length > 0" class="autocomplete-suggestions">
@@ -111,8 +108,11 @@
                         <td class="tg-cly1"></td>
                         <td class="tg-cly1"></td>
                     </tr>
+                    <tr *ngIf="filteredProducts.length == 0">
+                        <td [attr.colspan]="otas.length*3" class="py-2 bg-dark text-white text-center">No Data Found</td>
+                    </tr>
                     <ng-container *ngFor="let item of filteredProducts">
-                       <tr>  <td [attr.colspan]="otas.length*3" class="d-bloc py-2 bg-dark text-white">Group : {{item.group}}</td></tr>
+                       <tr>  <td [attr.colspan]="otas.length*3" class="py-2 bg-dark text-white">Group : {{item.group}}</td></tr>
                         <tr *ngFor="let product of item.data">
                             <td>
                                 <label class="checkbox-container">

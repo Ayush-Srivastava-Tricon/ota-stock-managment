@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03a9f4;color: white;">
   <div class="container-fluid">
-    <a class="navbar-brand text-light" href="javascript:void(0)"> <code> OTA Stock Management</code> </a>
+    <div  style="color: black !important;">  Channel Stock Management</div>
     <button class="navbar-toggler" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,6 +14,10 @@
           <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
             [routerLink]="['/stock_management']">Stock Managment</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+              [routerLink]="['/order_list']">Order List</a>
+      </li>
       </ul>
     </div>
   </div>
@@ -24,27 +28,27 @@
     <div class="col-sm-2">
       <select class="form-control" [(ngModel)]="siteConfig.site">
         <option [value]="null">Select Website</option>
-        <option [value]="site.name" *ngFor="let site of siteList">{{site.name}}</option>
+        <option [value]="site.id" *ngFor="let site of siteList">{{site.name}}</option>
       </select>
     </div>
     <div class="col-sm-2">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="siteConfig.username">
+        <input type="text" class="form-control" placeholder="Username" [(ngModel)]="siteConfig.username">
       </div>
     </div>
     <div class="col-sm-2">
       <div class="input-group mb-3">
-        <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="siteConfig.password">
+        <input type="password" class="form-control" placeholder="Password" [(ngModel)]="siteConfig.password">
       </div>
     </div>
     <div class="col-sm-2">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Enter API Secret Key" [(ngModel)]="siteConfig.api_key">
+        <input type="text" class="form-control" placeholder="API Secret Key" [(ngModel)]="siteConfig.api_key">
       </div>
     </div>
     <div class="col-sm-2">
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Enter Hotel ID" [(ngModel)]="siteConfig.hotel_id">
+        <input type="text" class="form-control" placeholder="Partner ID" [(ngModel)]="siteConfig.partner_id">
       </div>
     </div>
     <div class="col-sm-2">
@@ -63,7 +67,7 @@
             <th>User Name</th>
             <th>Password</th>
             <th>API Secret Key</th>
-            <th>Access Type Hotel ID</th>
+            <th>Partner ID</th>
             <th>Status</th>
             <th>Action</th>
         </thead>
@@ -71,14 +75,13 @@
           <tr *ngIf="newSiteList.length == 0">
             <td colspan="7" class="text-center">No Data</td>
           </tr>
-          <tr *ngFor="let item of newSiteList;let idx=index;" (mouseover)="showActionDropDown[idx]=true"
-            (mouseleave)="showActionDropDown[idx]=false;">
+          <tr *ngFor="let item of newSiteList;let idx=index;">
             <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.site"></td>
             <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.username"></td>
             <td><input type="password" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.password">
             </td>
             <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.api_key"></td>
-            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.hotel_id"></td>
+            <td><input type="text" class="form-control" [disabled]="!item.isEditable" [(ngModel)]="item.partner_id"></td>
             <td>
               <div class="toggler" [ngClass]="{'disabled':!item.isEditable}">
                 <input id="toggler-{{idx}}" name="toggler-1" type="checkbox" [checked]="item.status" value="1">
@@ -94,7 +97,7 @@
               </div>
             </td>
             <td class="action-btn">
-              <div class="d-flex" *ngIf="showActionDropDown[idx]">
+              <div class="d-flex">
                 <button type="button" class="btn btn-sm btn-light " [title]="item.isEditable ? 'Save' : 'Edit'" (click)="item.isEditable=!item.isEditable">
                   <ng-container *ngIf="!item.isEditable">
                     <svg xmlns="http://www.w3.org/2000/svg"  width="16" height="16" fill="currentColor"

@@ -30,6 +30,10 @@ const routes: Routes = [
       path:'stock_management',
       loadChildren:()=>import("./component/stock-management/stock-management.module").then(m=>m.StockManagementModule)
     },
+    {
+      path:'order_list',
+      loadChildren:()=>import("./component/order-list/order-list.module").then(m=>m.OrderListModule)
+    },
 ];
 
 @NgModule({

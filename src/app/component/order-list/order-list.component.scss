@@ -174,7 +174,7 @@ td.action-btn {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   min-width: 160px;
   border-radius: 4px;
@@ -188,7 +188,6 @@ td.action-btn {
   text-decoration: none;
   display: block;
   width: 100%;
-
 }
 
 .dropdown-content a:hover {
@@ -198,5 +197,46 @@ td.action-btn {
 .dropdown-bar:hover .dropdown-content {
   display: flex;
   flex-direction: column;
-    align-items: start;
+  align-items: start;
+}
+
+.data-display {
+  position: absolute;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #00000038;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  top: 100%;
+  margin: 0;
+  max-height: 250px;
+  overflow: auto;
+  z-index: 5;
+}
+
+.data-display>ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+.data-display>ul>li {
+  padding: 5px 11px;
+  border-bottom: 1px solid #00000038;
+  cursor: pointer;
+  list-style: none !important;
+  font-style: oblique;
+  font-weight: 600;
+}
+
+.data-display>ul>li:hover {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.disabled {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+  background: #b3b3b3 !important;
 }

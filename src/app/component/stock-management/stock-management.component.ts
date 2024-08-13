@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { OwnerService } from 'src/app/services/owner.service';
+import { AlertService } from 'src/app/shared/alert.service';
 
 @Component({
   selector: 'app-stock-management',
@@ -6,7 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./stock-management.component.scss']
 })
 export class StockManagementComponent {
-
   loader: boolean = false;
   searchText: any = '';
   isSorted: any = {}
@@ -16,246 +17,121 @@ export class StockManagementComponent {
     { name: 'Lazada', visible: true, bg_color: 'black' },
     { name: 'TikTok', visible: true, bg_color: 'black' }
   ];
+  // products: any = [];
   products: any = [
     {
-      group: "Blue",
+      group: "077-NAVY BLUE-PARENT",
       data: [
         {
-          name: 'NATALIE',
+          name: 'SARAH',
           sku: {
-            number: "156",
-            color: 'blue',
-            size: "M"
+            number: "077",
+            color: 'NAVY BLUE',
+            size: "S"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 245, discount: 199 },
+            Shopee: { price: 245, discount: 199 },
+            Lazada: { price: 245, discount: 199 },
+            TikTok: { price: 245, discount: 199 }
           }
         },
         {
-          name: 'America',
+          name: 'SARAH',
           sku: {
-            number: "156",
-            color: 'blue',
+            number: "077",
+            color: 'NAVY BLUE',
             size: "XL"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 245, discount: 199 },
+            Shopee: { price: 245, discount: 199 },
+            Lazada: { price: 245, discount: 199 },
+            TikTok: { price: 245, discount: 199 }
           }
         },
         {
-          name: 'KATHERINE',
+          name: 'SARAH',
           sku: {
-            number: "156",
-            color: 'Blue',
-            size: "S"
+            number: "077",
+            color: 'NAVY BLUE',
+            size: "L"
           },
           stock: 15,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 245, discount: 199 },
+            Shopee: { price: 245, discount: 199 },
+            Lazada: { price: 245, discount: 199 },
+            TikTok: { price: 245, discount: 199 }
           }
         },
         {
-          name: 'London',
+          name: 'SARAH',
           sku: {
-            number: "156",
-            color: 'blue',
-            size: "L"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-        {
-          name: 'Australia',
-          sku: {
-            number: "156",
-            color: 'BLUE',
-            size: "XXL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-      ]
-    },
-    {
-      group: "Magenta",
-      data: [
-        {
-          name: 'Japan',
-          sku: {
-            number: "157",
-            color: 'magenta',
-            size: "S"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-        {
-          name: 'Ronaldo',
-          sku: {
-            number: "157",
-            color: 'magenta',
+            number: "077",
+            color: 'NAVY BLUE',
             size: "M"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 245, discount: 199 },
+            Shopee: { price: 245, discount: 199 },
+            Lazada: { price: 245, discount: 199 },
+            TikTok: { price: 245, discount: 199 }
           }
-        },
-        {
-          name: 'Messi',
-          sku: {
-            number: "157",
-            color: 'magenta',
-            size: "L"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-        {
-          name: 'Air Jordan',
-          sku: {
-            number: "157",
-            color: 'magenta',
-            size: "XL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-        {
-          name: 'Nike',
-          sku: {
-            number: "157",
-            color: 'magenta',
-            size: "XXL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-
+        }
       ]
     },
     {
-      group: "Orange",
+      group: "161-NAVY BLUE-PARENT",
       data: [
         {
-          name: 'Japan',
+          name: 'MIRANDA',
           sku: {
-            number: "154",
-            color: 'Orange',
+            number: "161",
+            color: 'NAVY BLUE',
             size: "S"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 295, discount: 199 },
+            Shopee: { price: 295, discount: 199 },
+            Lazada: { price: 295, discount: 199 },
+            TikTok: { price: 295, discount: 199 }
           }
         },
         {
-          name: 'Ronaldo',
+          name: 'MIRANDA',
           sku: {
-            number: "154",
-            color: 'Orange',
+            number: "161",
+            color: 'NAVY BLUE',
             size: "M"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 295, discount: 199 },
+            Shopee: { price: 295, discount: 199 },
+            Lazada: { price: 295, discount: 199 },
+            TikTok: { price: 295, discount: 199 }
           }
         },
         {
-          name: 'Messi',
+          name: 'MIRANDA',
           sku: {
-            number: "154",
-            color: 'Orange',
+            number: "161",
+            color: 'NAVY BLUE',
             size: "L"
           },
           stock: 24,
           prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
+            WooCommerce: { price: 295, discount: 199 },
+            Shopee: { price: 295, discount: 199 },
+            Lazada: { price: 295, discount: 199 },
+            TikTok: { price: 295, discount: 199 }
           }
-        },
-        {
-          name: 'Air Jordan',
-          sku: {
-            number: "154",
-            color: 'Orange',
-            size: "XL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
-        {
-          name: 'Nike',
-          sku: {
-            number: "154",
-            color: 'Orange',
-            size: "XXL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 195 },
-            Shopee: { price: 295, discount: 195 },
-            Lazada: { price: 295, discount: 195 },
-            TikTok: { price: 295, discount: 295 }
-          }
-        },
+        }
 
       ]
     }
@@ -265,15 +141,30 @@ export class StockManagementComponent {
   filteredSuggestions: string[] = [];
   sizeOrder = ['S', 'M', 'L', 'XL', 'XXL'];
 
-  constructor() { }
+  constructor(private _service: OwnerService, private alertService: AlertService) { }
 
   ngOnInit() {
-    this.filteredProducts = [...this.products];
+    this.fetchAllProducts();
+    this.filteredProducts = [...this.products]
   }
 
+  fetchAllProducts() {
+    this.loader = true;
+    this._service.fetchAllProducts((res: any) => {
+      if (res.status == 200) {
+        this.products = res.responseData;
+        this.filteredProducts = [...this.products];
+      } else {
+        console.log('No product Found!');
+      }
+      this.loader = false;
+    });
+  }
   sortSKU(order: 'asc' | 'desc', sortBy: any) {
+    this.loader = true;
     this.isSorted[sortBy] = !this.isSorted[sortBy];
     this.sortList(order, sortBy);
+    this.loader = false;
   }
 
   sortList(order: 'asc' | 'desc', sortBy: any) {
@@ -380,9 +271,74 @@ export class StockManagementComponent {
     this.filteredSuggestions = [];
   }
 
-  saveData() {
-    console.log(this.filteredProducts);
+  updateData() {
+    this.loader = true;
+    var cnt = 0;
+    this.filteredProducts.forEach((element: any) => {
+      element.data.forEach((dataval: any) => {
+        if (dataval.isEditable == true) {
+          cnt = 1;
+          this._service.updateStocks(dataval, (res: any) => {
+            if (res.status == 200) {
+              dataval.isEditable = false;
+            }
+          });
+        }
+      });
+    });
+    if (cnt == 0) {
+      this.alertService.alert("error", "Please select atleast one Item/Product", "Error", { displayDuration: 3000, pos: 'top' });
+    } else {
+      this.alertService.alert("success", "Updated Successfully", "Success", { displayDuration: 3000, pos: 'top' });
+    }
+    this.loader = false;
   }
 
+  importGSheet() {
+    this.loader = true;
+    this._service.importGoogleSheetData((res: any) => {
+      if (res.status == 200) {
+        this.alertService.alert("success", res.message, "Success", { displayDuration: 3000, pos: 'top' });
+        this.fetchAllProducts();
+      } else {
+        this.alertService.alert("error", "Please select atleast one Item/Product", "Error", { displayDuration: 3000, pos: 'top' });
+      }
+      this.loader = false;
+    });
+  }
+
+  syncChanges() {
+    this.loader = true;
+    // get data from sync table and send to the channel
+    this._service.syncChanges({}, (res: any) => {
+      this.loader = false;
+      if (res.status == 200) {
+        this.alertService.alert("success", res.message, "Success", { displayDuration: 3000, pos: 'top' });
+      } else {
+        this.alertService.alert("warning", "No Item for Syncing", "Warning", { displayDuration: 3000, pos: 'top' });
+      }
+
+    });
+  }
+
+  updatePriceAndDiscInSelectedColumn(updatedPrice: any, otaName: any, updateBy: any) {
+    this.filteredProducts.forEach((e: any) => {
+      e.data.forEach((ele: any) => {
+        if (ele.isEditable && ele.prices[otaName.name]) {
+          ele.prices[otaName.name][updateBy] = updatedPrice;
+        }
+      });
+    });
+  }
+
+  updateStock(updatedStockPrice: any) {
+    this.filteredProducts.forEach((e: any) => {
+      e.data.forEach((ele: any) => {
+        if (ele.isEditable) {
+          ele.stock = updatedStockPrice;
+        }
+      })
+    });
+  }
 
 }

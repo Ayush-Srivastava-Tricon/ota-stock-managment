@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03a9f4;color: white;">
+    <div class="container-fluid">
+        <div style="color: black !important;"> Channel Stock Management</div>
+        <button class="navbar-toggler" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+                        [routerLink]="['/network_setting']">Network Setting</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+                        [routerLink]="['/stock_management']">Stock Managment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" #rla routerLinkActive="active" href="javascript:void(0)"
+                        [routerLink]="['/order_list']">Order List</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid my-4">
+    <div class="row my-2">
+        <div class="col-sm-3">
+            <div class="form-group p-3 shadow rounded">
+                <label for="findUser">Search OTA</label>
+                <div class="input-group">
+                    <input type="text" (keyup)="searchOta($event)" class="form-control" placeholder="Enter Name">
+                    <br>
+                    <ng-container *ngIf="filteredOtaResult.length>0">
+                        <div class="data-display">
+                            <ul>
+                                <li *ngFor="let item of filteredOtaResult" (click)="selectOta(item)"> {{item.ota_name|titlecase}}</li>
+                            </ul>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="filteredOtaResult.length==0 && showDropdown">
+                        <div class="data-display">
+                            <ul>
+                                <li class="no-data"> No Data Found</li>
+                            </ul>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 p-3">
+            <table class="table table-bordered table-hover shadow">
+                <thead>
+                    <tr>
+                        <th>OTA Name</th>
+                        <th>SKU ID</th>
+                        <th>SKU</th>
+                        <th>Item Count</th>
+                        <th>Order Id</th>
+                        <th>Currency</th>
+                        <th>Product Detail</th>
+                        <th>Order Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="loader">
+                        <td [attr.colspan]="8" class="text-center"><div class="spinner-grow text-secondary fs-1" style="width: 3rem; height: 3rem;"></div></td>
+                    </tr>
+                    <tr *ngFor="let item of filteredData">
+                        <td>{{item.ota_name}}</td>
+                        <td>{{item.sku_id}}</td>
+                        <td>{{item.sku}}</td>
+                        <td>{{item.order_id}}</td>
+                        <td>{{item.currency}}</td>
+                        <td>{{item.currency}}</td>
+                        <td> <a [href]="item.product_detail_url" target="_blank">View Detail</a></td>
+                        <td>{{item.order_status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

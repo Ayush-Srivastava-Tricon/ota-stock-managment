@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http" ;
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +13,17 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: []
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  // return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
+  // return new TranslateHttpLoader(http,`./${isProduction ? 'hotel-app/' : ''}assets/i18n/`, '.json');
+}

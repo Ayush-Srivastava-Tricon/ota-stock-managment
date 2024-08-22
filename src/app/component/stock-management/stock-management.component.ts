@@ -17,125 +17,125 @@ export class StockManagementComponent {
     { name: 'Lazada', visible: true, bg_color: 'black' },
     { name: 'TikTok', visible: true, bg_color: 'black' }
   ];
-  // products: any = [];
-  products: any = [
-    {
-      group: "077-NAVY BLUE-PARENT",
-      data: [
-        {
-          name: 'SARAH',
-          sku: {
-            number: "077",
-            color: 'NAVY BLUE',
-            size: "S"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 245, discount: 199 },
-            Shopee: { price: 245, discount: 199 },
-            Lazada: { price: 245, discount: 199 },
-            TikTok: { price: 245, discount: 199 }
-          }
-        },
-        {
-          name: 'SARAH',
-          sku: {
-            number: "077",
-            color: 'NAVY BLUE',
-            size: "XL"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 245, discount: 199 },
-            Shopee: { price: 245, discount: 199 },
-            Lazada: { price: 245, discount: 199 },
-            TikTok: { price: 245, discount: 199 }
-          }
-        },
-        {
-          name: 'SARAH',
-          sku: {
-            number: "077",
-            color: 'NAVY BLUE',
-            size: "L"
-          },
-          stock: 15,
-          prices: {
-            WooCommerce: { price: 245, discount: 199 },
-            Shopee: { price: 245, discount: 199 },
-            Lazada: { price: 245, discount: 199 },
-            TikTok: { price: 245, discount: 199 }
-          }
-        },
-        {
-          name: 'SARAH',
-          sku: {
-            number: "077",
-            color: 'NAVY BLUE',
-            size: "M"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 245, discount: 199 },
-            Shopee: { price: 245, discount: 199 },
-            Lazada: { price: 245, discount: 199 },
-            TikTok: { price: 245, discount: 199 }
-          }
-        }
-      ]
-    },
-    {
-      group: "161-NAVY BLUE-PARENT",
-      data: [
-        {
-          name: 'MIRANDA',
-          sku: {
-            number: "161",
-            color: 'NAVY BLUE',
-            size: "S"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 199 },
-            Shopee: { price: 295, discount: 199 },
-            Lazada: { price: 295, discount: 199 },
-            TikTok: { price: 295, discount: 199 }
-          }
-        },
-        {
-          name: 'MIRANDA',
-          sku: {
-            number: "161",
-            color: 'NAVY BLUE',
-            size: "M"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 199 },
-            Shopee: { price: 295, discount: 199 },
-            Lazada: { price: 295, discount: 199 },
-            TikTok: { price: 295, discount: 199 }
-          }
-        },
-        {
-          name: 'MIRANDA',
-          sku: {
-            number: "161",
-            color: 'NAVY BLUE',
-            size: "L"
-          },
-          stock: 24,
-          prices: {
-            WooCommerce: { price: 295, discount: 199 },
-            Shopee: { price: 295, discount: 199 },
-            Lazada: { price: 295, discount: 199 },
-            TikTok: { price: 295, discount: 199 }
-          }
-        }
+   products: any = [];
+  // products: any = [
+  //   {
+  //     group: "077-NAVY BLUE-PARENT",
+  //     data: [
+  //       {
+  //         name: 'SARAH',
+  //         sku: {
+  //           number: "077",
+  //           color: 'NAVY BLUE',
+  //           size: "S"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 245, discount: 199 },
+  //           Shopee: { price: 245, discount: 199 },
+  //           Lazada: { price: 245, discount: 199 },
+  //           TikTok: { price: 245, discount: 199 }
+  //         }
+  //       },
+  //       {
+  //         name: 'SARAH',
+  //         sku: {
+  //           number: "077",
+  //           color: 'NAVY BLUE',
+  //           size: "XL"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 245, discount: 199 },
+  //           Shopee: { price: 245, discount: 199 },
+  //           Lazada: { price: 245, discount: 199 },
+  //           TikTok: { price: 245, discount: 199 }
+  //         }
+  //       },
+  //       {
+  //         name: 'SARAH',
+  //         sku: {
+  //           number: "077",
+  //           color: 'NAVY BLUE',
+  //           size: "L"
+  //         },
+  //         stock: 15,
+  //         prices: {
+  //           WooCommerce: { price: 245, discount: 199 },
+  //           Shopee: { price: 245, discount: 199 },
+  //           Lazada: { price: 245, discount: 199 },
+  //           TikTok: { price: 245, discount: 199 }
+  //         }
+  //       },
+  //       {
+  //         name: 'SARAH',
+  //         sku: {
+  //           number: "077",
+  //           color: 'NAVY BLUE',
+  //           size: "M"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 245, discount: 199 },
+  //           Shopee: { price: 245, discount: 199 },
+  //           Lazada: { price: 245, discount: 199 },
+  //           TikTok: { price: 245, discount: 199 }
+  //         }
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     group: "161-NAVY BLUE-PARENT",
+  //     data: [
+  //       {
+  //         name: 'MIRANDA',
+  //         sku: {
+  //           number: "161",
+  //           color: 'NAVY BLUE',
+  //           size: "S"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 295, discount: 199 },
+  //           Shopee: { price: 295, discount: 199 },
+  //           Lazada: { price: 295, discount: 199 },
+  //           TikTok: { price: 295, discount: 199 }
+  //         }
+  //       },
+  //       {
+  //         name: 'MIRANDA',
+  //         sku: {
+  //           number: "161",
+  //           color: 'NAVY BLUE',
+  //           size: "M"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 295, discount: 199 },
+  //           Shopee: { price: 295, discount: 199 },
+  //           Lazada: { price: 295, discount: 199 },
+  //           TikTok: { price: 295, discount: 199 }
+  //         }
+  //       },
+  //       {
+  //         name: 'MIRANDA',
+  //         sku: {
+  //           number: "161",
+  //           color: 'NAVY BLUE',
+  //           size: "L"
+  //         },
+  //         stock: 24,
+  //         prices: {
+  //           WooCommerce: { price: 295, discount: 199 },
+  //           Shopee: { price: 295, discount: 199 },
+  //           Lazada: { price: 295, discount: 199 },
+  //           TikTok: { price: 295, discount: 199 }
+  //         }
+  //       }
 
-      ]
-    }
-  ];
+  //     ]
+  //   }
+  // ];
   filteredProducts: any = [];
   searchQuery = '';
   filteredSuggestions: string[] = [];

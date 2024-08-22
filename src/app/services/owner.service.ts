@@ -38,6 +38,18 @@ export class OwnerService extends BaseServiceService {
     this.postData(param, this.httpUrl['syncChanges'], callback)
   }
 
+  syncAllDataToWoo(param: any, callback: any) {
+    this.putData(param, this.httpUrl['syncAllDataToWoo'], callback)
+  }
+
+  syncAllDataToLazada(param: any, callback: any) {
+    this.putData(param, this.httpUrl['syncAllDataToLazada'], callback)
+  }
+
+  syncAllDataToShopee(param: any, callback: any) {
+    this.putData(param, this.httpUrl['syncAllDataToShopee'], callback)
+  }
+
   fetchCountry(callback: any) {
     this.getData({}, this.httpUrl['get-countries'], callback);
   }

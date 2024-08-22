@@ -1,0 +1,38 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-sm-12 p-3">
+            <table class="table table-bordered table-hover shadow">
+                <thead>
+                    <tr class="table-headers">
+                        <th>Channel</th>
+                        <th>SKU</th>
+                        <th>Quantity</th>
+                        <th>Base Price</th>
+                        <th>Sale Price</th>
+                        <th>Success</th>
+                        <th>Failed</th>
+                        <th>Send/Receive Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="loader">
+                        <td [attr.colspan]="8" class="text-center"><div class="spinner-grow text-secondary fs-1" style="width: 3rem; height: 3rem;"></div></td>
+                    </tr>
+                    <tr *ngIf="!loader && logStatusData.length==0">
+                        <td [attr.colspan]="8" class="text-center">No Data Found</td>
+                    </tr>
+                    <tr *ngFor="let item of logStatusData">
+                        <td>{{item.channel}}</td>
+                        <td>{{item.sku}}</td>
+                        <td>{{item.qty}}</td>
+                        <td>{{item.base_price}}</td>
+                        <td>{{item.sale_price}}</td>
+                        <td>{{item.success}}</td>
+                        <td>{{item.failed}}</td>
+                        <td>{{item.time}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

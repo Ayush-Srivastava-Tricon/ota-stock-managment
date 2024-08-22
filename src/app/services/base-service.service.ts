@@ -12,32 +12,34 @@ const httpOptions = {
 export class BaseServiceService {
 
   httpUrl: any = {
-    'listAllProducts': "product_management/googlesheet/listAllProducts",
-    'updateStocks': "product_management/googlesheet/updateStocks",
-    'listChannels': "product_management/googlesheet/listChannels",
-    'addChannelCredential': "product_management/googlesheet/addChannelCredential",
-    'listChannelCredentials': "product_management/googlesheet/listChannelCredentials",
-    'importGoogleSheetData': "product_management/googlesheet/getProducts",
-    'syncChanges': "product_management/googlesheet/syncChanges",
-
+    'listAllProducts': "product_management_API/googlesheet/listAllProducts",
+    'updateStocks': "product_management_API/googlesheet/updateStocks",
+    'listChannels': "product_management_API/googlesheet/listChannels",
+    'addChannelCredential': "product_management_API/googlesheet/addChannelCredential",
+    'listChannelCredentials': "product_management_API/googlesheet/listChannelCredentials",
+    'importGoogleSheetData': "product_management_API/googlesheet/getProducts",
+    'syncChanges': "product_management_API/googlesheet/syncChanges",
+    'syncAllDataToLazada': 'product_management_API/lazada/syncAllDataToLazada',
+    'syncAllDataToWoo': 'product_management_API/woocommerce/syncAllDataToWoo',
+    'syncAllDataToShopee': 'product_management_API/shopee/syncAllDataToShopee',
+    'get-order-list': 'product_management_API/lazada/generateOrderList',
     // <=======AUTHENTICATION=======>
-    'login': "product_management/login",
-    'logout': "product_management/logout",
-    'captcha': "product_management/captcha",
-
+    'login': "product_management_API/login",
+    'logout': "product_management_API/logout",
+    'captcha': "product_management_API/captcha",
 
     //<========Admin Service=========>
-    'addOwner': 'product_management/owners',
+    'addOwner': 'product_management_API/owners',
 
     //<=======Owner Serivce===========>
-    'getAllProperty': 'product_management/properties',
-    'get-countries': 'product_management/country',
-    'get-state': 'product_management/state',
-    'get-city': 'product_management/city',
-    'settings': 'product_management/settings',
-    'defaultData': 'product_management/settings/defaultData',
-    'changepassword': 'product_management/changepassword',
-    'get-order-list': 'product_management/get-order-list',
+    'getAllProperty': 'product_management_API/properties',
+    'get-countries': 'product_management_API/country',
+    'get-state': 'product_management_API/state',
+    'get-city': 'product_management_API/city',
+    'settings': 'product_management_API/settings',
+    'defaultData': 'product_management_API/settings/defaultData',
+    'changepassword': 'product_management_API/changepassword',
+
   }
 
   constructor(public http: HttpClient) { }
@@ -51,8 +53,8 @@ export class BaseServiceService {
     let headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*')
-   //   .set('Authorization', `Bearer ${this.getTokenFromLocal()}`)
-      
+    //   .set('Authorization', `Bearer ${this.getTokenFromLocal()}`)
+
     return this.http.get(environment.apiUrl + url, { headers: headers, params: data }).subscribe((data: any) => {
       callback(<any>data);
     },
@@ -138,7 +140,7 @@ export class BaseServiceService {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*')
-   //   .set('Authorization', `Bearer ${this.getTokenFromLocal()}`)
+    //   .set('Authorization', `Bearer ${this.getTokenFromLocal()}`)
 
     return this.http.put(environment.apiUrl + url, data, { headers: headers }).subscribe((data: any) => { callback(data) },
       (error: any) => {

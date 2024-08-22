@@ -17,7 +17,9 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.user.email == this.loginConfig.email && this.user.password == this.loginConfig.password) {
+   // if (this.user.email == this.loginConfig.email && this.user.password == this.loginConfig.password) {
+  // console.log(this.loginConfig);
+   if(this.loginConfig.email != undefined && this.loginConfig.password != undefined){
       this.router.navigate(['/network_setting']);
     } else {
       alert('Invalid email or password.');

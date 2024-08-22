@@ -34,6 +34,10 @@ const routes: Routes = [
       path:'order_list',
       loadChildren:()=>import("./component/order-list/order-list.module").then(m=>m.OrderListModule)
     },
+    {
+      path:'log_status',
+      loadChildren:()=>import("./component/log-status/log-status.module").then(m=>m.LogStatusModule)
+    },
 ];
 
 @NgModule({
